@@ -40,7 +40,18 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(HomeViewMo
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getNowPlayingMovies()
+        viewModel.getUpComingMovies()
+    }
+
     private fun setListener() {
+        binding?.swipeComingList?.setOnRefreshListener {
+            viewModel.getUpComingMovies()
+            viewModel.getNowPlayingMovies()
+            binding?.swipeComingList?.isRefreshing = false
+        }
 
     }
 

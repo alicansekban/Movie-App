@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/posterImg"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="400dp"
                 app:urlImage="@{viewModel.movieDetailResponse.posterUrl}" />
 
             <TextView
@@ -57,8 +57,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="72dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="32dp"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
@@ -78,17 +78,6 @@
                     android:text="@{viewModel.movieDetailResponse.releaseDate}"
                     android:textSize="15sp"
                     tools:text="12.02.2020" />
-
-                <TextView
-                    android:id="@+id/txtImdb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:background="@color/yellow"
-                    android:text="IMDB"
-                    android:textSize="25sp"
-                    tools:text="IMDB" />
 
             </LinearLayout>
         </LinearLayout>

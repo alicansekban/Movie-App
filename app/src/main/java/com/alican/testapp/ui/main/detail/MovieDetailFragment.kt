@@ -1,12 +1,9 @@
 package com.alican.testapp.ui.main.detail
 
-import android.content.Intent
-import android.net.Uri
 import androidx.navigation.fragment.navArgs
 import com.alican.testapp.R
 import com.alican.testapp.core.BaseFragment
 import com.alican.testapp.databinding.FragmentMovieDetailBinding
-import com.alican.testapp.utils.util.extension.clickWithDebounce
 import com.alican.testapp.utils.util.extension.dismissProgressDialog
 import com.alican.testapp.utils.util.extension.observeWith
 import com.alican.testapp.utils.util.extension.showProgressDialog
@@ -22,20 +19,8 @@ class MovieDetailFragment :
 
     override fun onInit() {
         viewModel.getMovieDetail(args.id)
-        setListener()
         binding?.viewModel?.progressLiveData?.observeWith(viewLifecycleOwner) {
             if (it) showProgressDialog() else dismissProgressDialog()
-        }
-    }
-
-    private fun setListener() {
-        binding?.txtImdb?.clickWithDebounce {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://www.themoviedb.org")
-                )
-            )
         }
     }
 }
