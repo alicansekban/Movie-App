@@ -50,4 +50,6 @@ data class ResultsItem(
     val voteCount: Int? = null
 ) : Parcelable {
     fun getPosterUrl() = "https://image.tmdb.org/t/p/w500$posterPath"
+
+    fun gettitle() = "$title ($releaseDate)"
 }

@@ -82,7 +82,5 @@ data class MovieDetailResponse(
     @Json(name = "status")
     val status: String? = null
 ) : Parcelable {
-    fun getPhoto(): String {
-        return "https://api.themoviedb.org/3/movie/${posterPath}"
-    }
+    fun getPosterUrl() = "https://image.tmdb.org/t/p/w500$posterPath"
 }

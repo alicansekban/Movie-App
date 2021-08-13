@@ -30,8 +30,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         val navGraphIds = listOf(
-            R.navigation.main_graph,
-            R.navigation.other_graph,
+            R.navigation.main_graph
         )
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,
@@ -55,7 +54,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         when (navHostFragment.navController.currentDestination?.id) {
-            R.id.homeFragment, R.id.otherFragment -> {
+            R.id.homeFragment -> {
                 super.onBackPressed()
             }
             else -> {

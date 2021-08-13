@@ -48,4 +48,7 @@ data class ResultsItem(
 
     @Json(name = "vote_count")
     val voteCount: Int? = null
-) : Parcelable
+) : Parcelable {
+    fun getPosterUrl() = "https://image.tmdb.org/t/p/w500$posterPath"
+
+}

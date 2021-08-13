@@ -1,6 +1,5 @@
 package com.alican.testapp.ui.main.home
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.alican.testapp.core.BaseViewModel
@@ -9,14 +8,17 @@ import com.alican.testapp.net.response.now_playing.NowPlayingResponse
 import com.alican.testapp.net.response.up_coming.UpComingResponse
 import com.alican.testapp.utils.util.ResultWrapper
 import com.alican.testapp.utils.util.safeApiCall
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel @ViewModelInject constructor(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val api: Api
 ) : BaseViewModel() {
 
-    val upComingResponse = MutableLiveData<List<UpComingResponse>>()
+    val upComingResponse = MutableLiveData<UpComingResponse>()
     val nowPlayingResponse = MutableLiveData<NowPlayingResponse>()
 
     init {

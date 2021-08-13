@@ -12,7 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/itemRoot"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
         android:clipChildren="false"
         android:clipToPadding="false">
 
@@ -30,10 +30,10 @@
                 <ImageView
                     android:id="@+id/movieImg"
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    urlImage="@{viewModel.item.posterUrl}"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:src="@{viewModel.item.results.get(0).posterPath}"
+                    android:layout_height="match_parent"
                     tools:src="@drawable/abc_vector_test" />
 
                 <TextView
@@ -43,36 +43,48 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_toEndOf="@id/movieImg"
+                    android:text="@{viewModel.item.title}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     tools:text="Marriage Story (2019)" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txtMovieTitle"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/txtMovieTitle"
                     android:layout_alignStart="@id/txtMovieTitle"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="40dp"
-                    android:paddingBottom="16dp"
-                    android:textSize="12sp"
-                    tools:text="TEST TEST TEST TEST TEST TEST TEST" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    tools:text="21/12/21" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_weight="8"
+                        android:gravity="center_vertical"
+                        android:text="@{viewModel.item.overview}"
+                        android:textSize="12sp"
+                        tools:text="TEST TEST TEST TEST TEST TEST TEST" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@{viewModel.item.releaseDate}"
+                        tools:text="21/12/21" />
+
+                </LinearLayout>
+
 
                 <ImageView
                     android:id="@+id/imgDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_show_detail" />

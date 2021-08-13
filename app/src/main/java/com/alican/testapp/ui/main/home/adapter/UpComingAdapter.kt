@@ -6,21 +6,21 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import com.alican.testapp.core.BaseAdapter
 import com.alican.testapp.databinding.ItemUpComingBinding
-import com.alican.testapp.net.response.up_coming.UpComingResponse
+import com.alican.testapp.net.response.up_coming.ResultsItem
 import com.alican.testapp.utils.util.extension.clickWithDebounce
 
-class UpComingAdapter(private val callBack: ((UpComingResponse) -> Unit)?) :
-    BaseAdapter<UpComingResponse>(object : DiffUtil.ItemCallback<UpComingResponse>() {
+class UpComingAdapter(private val callBack: ((ResultsItem) -> Unit)?) :
+    BaseAdapter<ResultsItem>(object : DiffUtil.ItemCallback<ResultsItem>() {
         override fun areItemsTheSame(
-            oldItem: UpComingResponse,
-            newItem: UpComingResponse
+            oldItem: ResultsItem,
+            newItem: ResultsItem
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: UpComingResponse,
-            newItem: UpComingResponse
+            oldItem: ResultsItem,
+            newItem: ResultsItem
         ): Boolean {
             return oldItem == newItem
         }

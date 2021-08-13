@@ -5,7 +5,6 @@ import androidx.navigation.fragment.findNavController
 import com.alican.testapp.R
 import com.alican.testapp.core.BaseFragment
 import com.alican.testapp.databinding.FragmentHomeBinding
-import com.alican.testapp.net.response.up_coming.UpComingResponse
 import com.alican.testapp.ui.main.home.adapter.NowPlayingAdapter
 import com.alican.testapp.ui.main.home.adapter.UpComingAdapter
 import com.alican.testapp.utils.util.extension.dismissProgressDialog
@@ -18,6 +17,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(HomeViewMo
     override fun onInit() {
 
         initAdapterNowPlaying()
+        setListener()
 
         binding?.viewModel?.progressLiveData?.observeWith(viewLifecycleOwner) {
             if (it) showProgressDialog() else dismissProgressDialog()
@@ -26,14 +26,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(HomeViewMo
             this.adapter = UpComingAdapter() {
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(
-                        it.results?.get(0)?.id.toString()
+                        it.id.toString()
                     )
                 findNavController().navigate(action)
             }
-            setHasFixedSize(true)
         }
         binding?.viewModel?.upComingResponse?.observeWith(this) {
-            initAdapterUpComing(it)
+            (binding?.upComingList?.adapter as? UpComingAdapter)?.submitList(it.results)
         }
         binding?.viewModel?.nowPlayingResponse?.observeWith(this) {
             (binding?.nowPlayingList?.adapter as? NowPlayingAdapter)?.submitList(it.results)
@@ -41,8 +40,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(HomeViewMo
 
     }
 
-    private fun initAdapterUpComing(list: List<UpComingResponse?>?) {
-        (binding?.upComingList?.adapter as? UpComingAdapter)?.submitList(list)
+    private fun setListener() {
+
     }
 
     private fun initAdapterNowPlaying() {
@@ -54,9 +53,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(HomeViewMo
         binding?.nowPlayingList?.apply {
             adapter = nowPlayingAdapter
         }
-
         binding?.indicator?.setViewPager2(binding!!.nowPlayingList)
-
 
     }
 

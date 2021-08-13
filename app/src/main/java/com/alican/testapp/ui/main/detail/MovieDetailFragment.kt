@@ -7,7 +7,12 @@ import com.alican.testapp.R
 import com.alican.testapp.core.BaseFragment
 import com.alican.testapp.databinding.FragmentMovieDetailBinding
 import com.alican.testapp.utils.util.extension.clickWithDebounce
+import com.alican.testapp.utils.util.extension.dismissProgressDialog
+import com.alican.testapp.utils.util.extension.observeWith
+import com.alican.testapp.utils.util.extension.showProgressDialog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailFragment :
     BaseFragment<MovieDetailViewModel, FragmentMovieDetailBinding>(MovieDetailViewModel::class.java) {
     private val args: MovieDetailFragmentArgs by navArgs()
@@ -16,17 +21,19 @@ class MovieDetailFragment :
     }
 
     override fun onInit() {
-        viewModel.getUpComingMovies(args.id)
+        viewModel.getMovieDetail(args.id)
         setListener()
-
+        binding?.viewModel?.progressLiveData?.observeWith(viewLifecycleOwner) {
+            if (it) showProgressDialog() else dismissProgressDialog()
+        }
     }
 
     private fun setListener() {
-        binding?.posterImg?.clickWithDebounce {
+        binding?.txtImdb?.clickWithDebounce {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=")
+                    Uri.parse("https://www.themoviedb.org")
                 )
             )
         }

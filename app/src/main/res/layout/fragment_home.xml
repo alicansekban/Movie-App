@@ -12,6 +12,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,9 +35,9 @@
                 android:id="@+id/indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:dotsColor="@color/black"
-                app:dotsSize="8dp"
+                android:layout_marginBottom="56dp"
+                app:dotsColor="@color/white"
+                app:dotsSize="6dp"
                 app:dotsSpacing="4dp"
                 app:layout_constraintBottom_toBottomOf="@id/nowPlayingList"
                 app:layout_constraintEnd_toEndOf="parent"

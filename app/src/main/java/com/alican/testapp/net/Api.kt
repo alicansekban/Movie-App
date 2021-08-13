@@ -12,7 +12,7 @@ interface Api {
     suspend fun getNowPlayingMovies(): NowPlayingResponse
 
     @GET("upcoming")
-    suspend fun getUpComingMovies(): List<UpComingResponse>
+    suspend fun getUpComingMovies(): UpComingResponse
 
     @GET("{id}")
     suspend fun getMovieDetail(@Path("id") id: String): MovieDetailResponse
