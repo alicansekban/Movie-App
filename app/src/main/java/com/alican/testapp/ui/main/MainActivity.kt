@@ -10,6 +10,7 @@ import com.alican.testapp.R
 import com.alican.testapp.core.BaseActivity
 import com.alican.testapp.databinding.ActivityMainBinding
 import com.alican.testapp.utils.util.setupWithNavController
+import com.alican.workapp.utils.util.extension.restartApp
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +25,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
     override fun onInit() {
         initNavigation()
 
+    }
+
+    override fun recreate() {
+        if (binding.viewModel?.needRestartAppForLocale?.value == true) {
+            restartApp()
+        } else super.recreate()
     }
 
     private fun initNavigation() {

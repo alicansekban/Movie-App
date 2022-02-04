@@ -7,6 +7,7 @@ import android.graphics.Matrix
 import android.net.Uri
 import android.text.TextUtils
 import androidx.exifinterface.media.ExifInterface
+import com.alican.testapp.ui.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +26,16 @@ fun String?.formatDateToTime(): String? {
 
         currentFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         return currentFormat.format(newDate)
+    }
+}
+
+
+fun Activity?.restartApp() {
+    val intent = Intent(this, MainActivity::class.java)
+    this?.let {
+        startActivity(intent)
+        this.finishAffinity()
+        overridePendingTransition(0, 0)
     }
 }
 

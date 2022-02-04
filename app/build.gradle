@@ -97,6 +97,10 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
 
 
+    // language
+    implementation 'com.akexorcist:localization:1.2.10'
+
+
     //Test
     testImplementation 'junit:junit:4.13.1'
     testImplementation "io.mockk:mockk:1.10.2"

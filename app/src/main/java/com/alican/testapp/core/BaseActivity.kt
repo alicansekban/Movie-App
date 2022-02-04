@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.alican.testapp.BR
 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private val mViewModelClass: Class<VM>) :
-    AppCompatActivity() {
+    LocalizationActivity() {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
